@@ -1,0 +1,10 @@
+authors = ["pablo@fastly.com"]
+description = "Basic .env + github actions"
+language = "javascript"
+manifest_version = 3
+name = "js_env"
+service_id = ""
+
+[scripts]
+  build = "npm run build"
+  post_init = "npm install"

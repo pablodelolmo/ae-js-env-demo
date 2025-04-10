@@ -1,0 +1,35 @@
+name: Build and Publish to Fastly
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    env:
+      VALUE_1: ${{ vars.VALUE_1 }}
+      VALUE_2: ${{ vars.VALUE_2 }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Fastly CLI
+        run: npm install -g @fastly/cli@latest
+
+      - name: Create .env
+        run: |
+          echo "VALUE_1=$VALUE_1" >> .env
+          echo "VALUE_2=$VALUE_2" >> .env
+
+      - name: Build the project
+        run: fastly compute build
+
+      - name: Publish to Fastly
+        run: fastly compute publish \
+          --service-id=${{ secrets.SERVICE_ID }} \
+          --token=${{ secrets.TOKEN }}
