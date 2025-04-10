@@ -30,6 +30,4 @@ jobs:
         run: fastly compute build
 
       - name: Publish to Fastly
-        run: fastly compute publish \
-          --service-id=${{ secrets.SERVICE_ID }} \
-          --token=${{ secrets.TOKEN }}
+        run: fastly compute publish --service-id=${{ secrets.SERVICE_ID }} --token=${{ secrets.TOKEN }}
