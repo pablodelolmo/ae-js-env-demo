@@ -1,9 +1,13 @@
-authors = ["pablo@fastly.com"]
-description = "Basic .env + github actions"
+# This file describes a Fastly Compute@Edge package. To learn more visit:
+# https://developer.fastly.com/reference/fastly-toml/
+
+authors = ["Your Name <your.email@example.com>"]
+description = "Fastly Compute@Edge service"
 language = "javascript"
-manifest_version = 3
-name = "js_env"
+manifest_version = 2
+name = "js-env"
 service_id = ""
+
 
 [scripts]
   build = "npm run build"
